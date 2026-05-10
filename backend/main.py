@@ -29,7 +29,7 @@ if not OPENAI_API_KEY or OPENAI_API_KEY == "la_tua_chiave":
 client = OpenAI(api_key=OPENAI_API_KEY)
 
 rag = RagStore()
-rag.load()
+rag_ready = False
 
 app = FastAPI(title="Restaurant Chatbot Prototype")
 
@@ -43,6 +43,14 @@ app.add_middleware(
 
 app.mount("/assets", StaticFiles(directory=str(ASSETS_DIR)), name="assets")
 
+@app.on_event("startup")
+def startup_event():
+    global rag_ready
+
+    print("[STARTUP] Caricamento indice RAG...")
+    rag.load()
+    rag_ready = True
+    print(f"[STARTUP] RAG pronto. Chunks caricati: {len(rag.chunks)}")
 
 class ChatRequest(BaseModel):
     message: str
@@ -579,6 +587,14 @@ Rispondi in modo utile, elegante, chiaro e commerciale.
 def chat(req: ChatRequest):
     message = req.message.strip()
 
+    if not rag_ready:
+        return ChatResponse(
+            answer="Sto completando l'avvio del menu digitale. Riprova tra qualche secondo.",
+            images=[],
+            dishes=[],
+            sources=[]
+    )
+
     if not message:
         raise HTTPException(status_code=400, detail="Messaggio vuoto.")
 
@@ -673,6 +689,7 @@ def health():
     return {
         "ok": True,
         "model": OPENAI_MODEL,
+        "rag_ready": rag_ready,
         "rag_chunks": len(rag.chunks)
     }
 
