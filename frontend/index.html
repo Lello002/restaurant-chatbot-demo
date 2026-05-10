@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Assistente AI Menu</title>
+
+  <link rel="stylesheet" href="style.css?v=3" />
+</head>
+
+<body>
+  <div class="background-orb orb-one"></div>
+  <div class="background-orb orb-two"></div>
+
+  <main class="app-shell">
+    <section class="hero-panel">
+      <div class="restaurant-logo-area">
+        <div id="restaurantLogo" class="restaurant-logo">🍽️</div>
+
+        <div>
+          <div id="brandPill" class="brand-pill">Assistente AI</div>
+          <div id="restaurantMeta" class="restaurant-meta">Menu digitale intelligente</div>
+        </div>
+      </div>
+
+      <h1 id="heroTitle">Benvenuto</h1>
+
+      <p id="heroSubtitle">
+        Scopri il menu, chiedi consigli sui piatti e trova subito ciò che fa per te.
+      </p>
+
+      <div class="restaurant-actions">
+        <a id="callButton" class="restaurant-action-btn" href="#">
+          📞 Chiama
+        </a>
+
+        <a id="mapsButton" class="restaurant-action-btn secondary" href="#" target="_blank" rel="noopener noreferrer">
+          📍 Mappa
+        </a>
+      </div>
+
+      <div class="hero-actions">
+        <button class="quick-btn" data-message="Cosa mi consigli se voglio qualcosa di leggero?">
+          Qualcosa di leggero
+        </button>
+
+        <button class="quick-btn" data-message="Quali sono i piatti consigliati?">
+          Piatti consigliati
+        </button>
+
+        <button class="quick-btn" data-message="Che bevande avete?">
+          Bevande
+        </button>
+
+        <button class="quick-btn" data-message="Ci sono piatti vegetariani?">
+          Vegetariani
+        </button>
+      </div>
+
+      <div class="selling-card">
+        <span class="dot"></span>
+        <div>
+          <strong>Assistente menu attivo</strong>
+          <p>
+            Risponde su piatti, ingredienti, prezzi, allergeni, orari e contatti del ristorante.
+          </p>
+        </div>
+      </div>
+
+      <div class="allergen-note">
+        <strong>Nota allergeni</strong>
+        <span>
+          Le informazioni sugli allergeni sono indicative. Per sicurezza confermare sempre con il personale.
+        </span>
+      </div>
+    </section>
+
+    <section class="chat-panel">
+      <header class="chat-header">
+        <div>
+          <span class="status-dot"></span>
+          <strong id="chatAssistantName">Assistente AI</strong>
+          <small>Online</small>
+        </div>
+
+        <button id="clearChatBtn">Reset</button>
+      </header>
+
+      <div id="chatMessages" class="chat-messages">
+        <div class="message assistant">
+          <div class="avatar">🍽️</div>
+          <div class="bubble">
+            Ciao! Sono l’assistente del ristorante. Dimmi cosa ti va e ti aiuto a scegliere dal menu.
+          </div>
+        </div>
+      </div>
+
+      <form id="chatForm" class="chat-input-area">
+        <input
+          id="messageInput"
+          type="text"
+          autocomplete="off"
+          maxlength="500"
+          placeholder="Scrivi una domanda sul menu..."
+        />
+
+        <button type="submit">
+          Invia
+        </button>
+      </form>
+    </section>
+  </main>
+
+  <div id="imageModal" class="image-modal hidden">
+    <button id="closeImageModal" class="image-modal-close">×</button>
+    <img id="modalImage" src="" alt="Immagine piatto ingrandita">
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

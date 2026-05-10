@@ -1,0 +1,28 @@
+{
+  "restaurant_name": "Gigio",
+  "assistant_name": "Assistente AI di Gigio",
+  "logo_type": "emoji",
+  "logo_emoji": "🍝",
+  "logo_image": "",
+  "hero_title": "Benvenuto da Gigio",
+  "hero_subtitle": "Scopri il menu, chiedi consigli sui piatti e trova subito ciò che fa per te.",
+  "style": "elegante, gentile, professionale",
+  "currency": "€",
+  "language": "italiano",
+  "address": "Piazza del Duomo, Firenze",
+  "phone": "+393331234567",
+  "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Piazza%20del%20Duomo%20Firenze",
+  "opening_hours": {
+    "lunedi": "12:00-15:00, 19:00-23:00",
+    "martedi": "12:00-15:00, 19:00-23:00",
+    "mercoledi": "12:00-15:00, 19:00-23:00",
+    "giovedi": "12:00-15:00, 19:00-23:00",
+    "venerdi": "12:00-15:00, 19:00-23:30",
+    "sabato": "12:00-15:00, 19:00-23:30",
+    "domenica": "chiuso"
+  },
+  "notes": [
+    "Gli allergeni devono essere confermati dal personale prima dell'ordine.",
+    "La disponibilità dei piatti può variare."
+  ]
+}

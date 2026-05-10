@@ -1,0 +1,187 @@
+{
+  "categories": [
+    {
+      "name": "Antipasti",
+      "items": [
+        {
+          "id": "bruschetta-mediterranea",
+          "name": "Bruschetta Mediterranea",
+          "price": 7.5,
+          "description": "Pane tostato con pomodoro fresco, basilico, olive taggiasche e olio extravergine d'oliva.",
+          "ingredients": [
+            "pane tostato",
+            "pomodoro fresco",
+            "basilico",
+            "olive taggiasche",
+            "olio extravergine d'oliva"
+          ],
+          "allergens": [
+            "glutine"
+          ],
+          "diet_tags": [
+            "vegetariano",
+            "vegano"
+          ],
+          "spicy": false,
+          "recommended": true,
+          "image": "/assets/dish_images/bruschetta-mediterranea.jpg"
+        },
+        {
+          "id": "tartare-salmone",
+          "name": "Tartare di Salmone",
+          "price": 13.0,
+          "description": "Tartare di salmone fresco con avocado, lime, erba cipollina e pepe rosa.",
+          "ingredients": [
+            "salmone",
+            "avocado",
+            "lime",
+            "erba cipollina",
+            "pepe rosa"
+          ],
+          "allergens": [
+            "pesce"
+          ],
+          "diet_tags": [
+            "senza glutine",
+            "senza lattosio"
+          ],
+          "spicy": false,
+          "recommended": true,
+          "image": "/assets/dish_images/tartare-salmone.jpg"
+        }
+      ]
+    },
+    {
+      "name": "Primi",
+      "items": [
+        {
+          "id": "risotto-funghi-porcini",
+          "name": "Risotto ai Funghi Porcini",
+          "price": 14.5,
+          "description": "Risotto cremoso con funghi porcini, burro, parmigiano e prezzemolo fresco.",
+          "ingredients": [
+            "riso",
+            "funghi porcini",
+            "burro",
+            "parmigiano",
+            "prezzemolo"
+          ],
+          "allergens": [
+            "latte"
+          ],
+          "diet_tags": [
+            "vegetariano",
+            "senza glutine"
+          ],
+          "spicy": false,
+          "recommended": true,
+          "image": "/assets/dish_images/risotto-funghi-porcini.jpg"
+        },
+        {
+          "id": "spaghetti-pomodoro-basilico",
+          "name": "Spaghetti Pomodoro e Basilico",
+          "price": 11.0,
+          "description": "Spaghetti con salsa di pomodoro, basilico fresco e olio extravergine d'oliva.",
+          "ingredients": [
+            "spaghetti",
+            "pomodoro",
+            "basilico",
+            "olio extravergine d'oliva"
+          ],
+          "allergens": [
+            "glutine"
+          ],
+          "diet_tags": [
+            "vegetariano",
+            "vegano",
+            "senza lattosio"
+          ],
+          "spicy": false,
+          "recommended": false,
+          "image": "/assets/dish_images/spaghetti-pomodoro-basilico.jpg"
+        }
+      ]
+    },
+    {
+      "name": "Secondi",
+      "items": [
+        {
+          "id": "tagliata-manzo-rucola-grana",
+          "name": "Tagliata di Manzo con Rucola e Grana",
+          "price": 23.0,
+          "description": "Tagliata di manzo alla griglia servita con rucola fresca, scaglie di grana e riduzione balsamica.",
+          "ingredients": [
+            "manzo",
+            "rucola",
+            "grana",
+            "riduzione balsamica"
+          ],
+          "allergens": [
+            "latte"
+          ],
+          "diet_tags": [
+            "senza glutine"
+          ],
+          "spicy": false,
+          "recommended": true,
+          "image": "/assets/dish_images/tagliata-manzo-rucola-grana.jpg"
+        }
+      ]
+    },
+    {
+      "name": "Dolci",
+      "items": [
+        {
+          "id": "cheesecake-frutti-bosco",
+          "name": "Cheesecake ai Frutti di Bosco",
+          "price": 6.5,
+          "description": "Cheesecake cremosa con base biscotto e salsa ai frutti di bosco.",
+          "ingredients": [
+            "formaggio fresco",
+            "biscotti",
+            "burro",
+            "frutti di bosco",
+            "zucchero"
+          ],
+          "allergens": [
+            "latte",
+            "glutine"
+          ],
+          "diet_tags": [
+            "vegetariano"
+          ],
+          "spicy": false,
+          "recommended": true,
+          "image": "/assets/dish_images/cheesecake-frutti-bosco.jpg"
+        }
+      ]
+    },
+    {
+      "name": "Bevande",
+      "items": [
+        {
+          "id": "limonata-artigianale",
+          "name": "Limonata Artigianale",
+          "price": 4.5,
+          "description": "Limonata fresca preparata con limoni, acqua, zucchero e menta.",
+          "ingredients": [
+            "limone",
+            "acqua",
+            "zucchero",
+            "menta"
+          ],
+          "allergens": [],
+          "diet_tags": [
+            "vegetariano",
+            "vegano",
+            "senza glutine",
+            "senza lattosio"
+          ],
+          "spicy": false,
+          "recommended": true,
+          "image": "/assets/dish_images/limonata-artigianale.jpg"
+        }
+      ]
+    }
+  ]
+}
