@@ -14,7 +14,7 @@ env/
 backend/.env
 
 # Local generated data
-backend/storage/
+# backend/storage/  # per la demo online lo carichiamo già indicizzato
 backend/logs/
 
 # Cache

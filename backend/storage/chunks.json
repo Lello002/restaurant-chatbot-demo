@@ -1,0 +1,290 @@
+[
+  {
+    "id": "restaurant-info",
+    "type": "restaurant_info",
+    "category": "Informazioni",
+    "item_id": "",
+    "name": "Gigio",
+    "price": null,
+    "text": "Nome ristorante: Gigio\nIndirizzo: Piazza del Duomo, Firenze\nTelefono: +393331234567\nOrari: {\"lunedi\": \"12:00-15:00, 19:00-23:00\", \"martedi\": \"12:00-15:00, 19:00-23:00\", \"mercoledi\": \"12:00-15:00, 19:00-23:00\", \"giovedi\": \"12:00-15:00, 19:00-23:00\", \"venerdi\": \"12:00-15:00, 19:00-23:30\", \"sabato\": \"12:00-15:00, 19:00-23:30\", \"domenica\": \"chiuso\"}\nNote: Gli allergeni devono essere confermati dal personale prima dell'ordine. La disponibilità dei piatti può variare.",
+    "image": "",
+    "images": [],
+    "metadata": {
+      "restaurant_name": "Gigio",
+      "assistant_name": "Assistente AI di Gigio",
+      "logo_type": "emoji",
+      "logo_emoji": "🍝",
+      "logo_image": "",
+      "hero_title": "Benvenuto da Gigio",
+      "hero_subtitle": "Scopri il menu, chiedi consigli sui piatti e trova subito ciò che fa per te.",
+      "style": "elegante, gentile, professionale",
+      "currency": "€",
+      "language": "italiano",
+      "address": "Piazza del Duomo, Firenze",
+      "phone": "+393331234567",
+      "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Piazza%20del%20Duomo%20Firenze",
+      "opening_hours": {
+        "lunedi": "12:00-15:00, 19:00-23:00",
+        "martedi": "12:00-15:00, 19:00-23:00",
+        "mercoledi": "12:00-15:00, 19:00-23:00",
+        "giovedi": "12:00-15:00, 19:00-23:00",
+        "venerdi": "12:00-15:00, 19:00-23:30",
+        "sabato": "12:00-15:00, 19:00-23:30",
+        "domenica": "chiuso"
+      },
+      "notes": [
+        "Gli allergeni devono essere confermati dal personale prima dell'ordine.",
+        "La disponibilità dei piatti può variare."
+      ]
+    }
+  },
+  {
+    "id": "bruschetta-mediterranea",
+    "type": "dish",
+    "category": "Antipasti",
+    "item_id": "bruschetta-mediterranea",
+    "name": "Bruschetta Mediterranea",
+    "price": 7.5,
+    "text": "Categoria: Antipasti\nNome piatto: Bruschetta Mediterranea\nPrezzo: 7.50 euro\nDescrizione: Pane tostato con pomodoro fresco, basilico, olive taggiasche e olio extravergine d'oliva.\nIngredienti: pane tostato, pomodoro fresco, basilico, olive taggiasche, olio extravergine d'oliva\nAllergeni: glutine\nCaratteristiche alimentari: vegetariano, vegano\nPiccantezza: non piccante\nConsigliato: piatto consigliato",
+    "image": "/assets/dish_images/bruschetta-mediterranea.jpg",
+    "images": [
+      "/assets/dish_images/bruschetta-mediterranea.jpg"
+    ],
+    "metadata": {
+      "id": "bruschetta-mediterranea",
+      "name": "Bruschetta Mediterranea",
+      "price": 7.5,
+      "description": "Pane tostato con pomodoro fresco, basilico, olive taggiasche e olio extravergine d'oliva.",
+      "ingredients": [
+        "pane tostato",
+        "pomodoro fresco",
+        "basilico",
+        "olive taggiasche",
+        "olio extravergine d'oliva"
+      ],
+      "allergens": [
+        "glutine"
+      ],
+      "diet_tags": [
+        "vegetariano",
+        "vegano"
+      ],
+      "spicy": false,
+      "recommended": true,
+      "image": "/assets/dish_images/bruschetta-mediterranea.jpg"
+    }
+  },
+  {
+    "id": "tartare-salmone",
+    "type": "dish",
+    "category": "Antipasti",
+    "item_id": "tartare-salmone",
+    "name": "Tartare di Salmone",
+    "price": 13.0,
+    "text": "Categoria: Antipasti\nNome piatto: Tartare di Salmone\nPrezzo: 13.00 euro\nDescrizione: Tartare di salmone fresco con avocado, lime, erba cipollina e pepe rosa.\nIngredienti: salmone, avocado, lime, erba cipollina, pepe rosa\nAllergeni: pesce\nCaratteristiche alimentari: senza glutine, senza lattosio\nPiccantezza: non piccante\nConsigliato: piatto consigliato",
+    "image": "/assets/dish_images/tartare-salmone.jpg",
+    "images": [
+      "/assets/dish_images/tartare-salmone.jpg"
+    ],
+    "metadata": {
+      "id": "tartare-salmone",
+      "name": "Tartare di Salmone",
+      "price": 13.0,
+      "description": "Tartare di salmone fresco con avocado, lime, erba cipollina e pepe rosa.",
+      "ingredients": [
+        "salmone",
+        "avocado",
+        "lime",
+        "erba cipollina",
+        "pepe rosa"
+      ],
+      "allergens": [
+        "pesce"
+      ],
+      "diet_tags": [
+        "senza glutine",
+        "senza lattosio"
+      ],
+      "spicy": false,
+      "recommended": true,
+      "image": "/assets/dish_images/tartare-salmone.jpg"
+    }
+  },
+  {
+    "id": "risotto-funghi-porcini",
+    "type": "dish",
+    "category": "Primi",
+    "item_id": "risotto-funghi-porcini",
+    "name": "Risotto ai Funghi Porcini",
+    "price": 14.5,
+    "text": "Categoria: Primi\nNome piatto: Risotto ai Funghi Porcini\nPrezzo: 14.50 euro\nDescrizione: Risotto cremoso con funghi porcini, burro, parmigiano e prezzemolo fresco.\nIngredienti: riso, funghi porcini, burro, parmigiano, prezzemolo\nAllergeni: latte\nCaratteristiche alimentari: vegetariano, senza glutine\nPiccantezza: non piccante\nConsigliato: piatto consigliato",
+    "image": "/assets/dish_images/risotto-funghi-porcini.jpg",
+    "images": [
+      "/assets/dish_images/risotto-funghi-porcini.jpg"
+    ],
+    "metadata": {
+      "id": "risotto-funghi-porcini",
+      "name": "Risotto ai Funghi Porcini",
+      "price": 14.5,
+      "description": "Risotto cremoso con funghi porcini, burro, parmigiano e prezzemolo fresco.",
+      "ingredients": [
+        "riso",
+        "funghi porcini",
+        "burro",
+        "parmigiano",
+        "prezzemolo"
+      ],
+      "allergens": [
+        "latte"
+      ],
+      "diet_tags": [
+        "vegetariano",
+        "senza glutine"
+      ],
+      "spicy": false,
+      "recommended": true,
+      "image": "/assets/dish_images/risotto-funghi-porcini.jpg"
+    }
+  },
+  {
+    "id": "spaghetti-pomodoro-basilico",
+    "type": "dish",
+    "category": "Primi",
+    "item_id": "spaghetti-pomodoro-basilico",
+    "name": "Spaghetti Pomodoro e Basilico",
+    "price": 11.0,
+    "text": "Categoria: Primi\nNome piatto: Spaghetti Pomodoro e Basilico\nPrezzo: 11.00 euro\nDescrizione: Spaghetti con salsa di pomodoro, basilico fresco e olio extravergine d'oliva.\nIngredienti: spaghetti, pomodoro, basilico, olio extravergine d'oliva\nAllergeni: glutine\nCaratteristiche alimentari: vegetariano, vegano, senza lattosio\nPiccantezza: non piccante\nConsigliato: piatto non segnato come consigliato",
+    "image": "/assets/dish_images/spaghetti-pomodoro-basilico.jpg",
+    "images": [
+      "/assets/dish_images/spaghetti-pomodoro-basilico.jpg"
+    ],
+    "metadata": {
+      "id": "spaghetti-pomodoro-basilico",
+      "name": "Spaghetti Pomodoro e Basilico",
+      "price": 11.0,
+      "description": "Spaghetti con salsa di pomodoro, basilico fresco e olio extravergine d'oliva.",
+      "ingredients": [
+        "spaghetti",
+        "pomodoro",
+        "basilico",
+        "olio extravergine d'oliva"
+      ],
+      "allergens": [
+        "glutine"
+      ],
+      "diet_tags": [
+        "vegetariano",
+        "vegano",
+        "senza lattosio"
+      ],
+      "spicy": false,
+      "recommended": false,
+      "image": "/assets/dish_images/spaghetti-pomodoro-basilico.jpg"
+    }
+  },
+  {
+    "id": "tagliata-manzo-rucola-grana",
+    "type": "dish",
+    "category": "Secondi",
+    "item_id": "tagliata-manzo-rucola-grana",
+    "name": "Tagliata di Manzo con Rucola e Grana",
+    "price": 23.0,
+    "text": "Categoria: Secondi\nNome piatto: Tagliata di Manzo con Rucola e Grana\nPrezzo: 23.00 euro\nDescrizione: Tagliata di manzo alla griglia servita con rucola fresca, scaglie di grana e riduzione balsamica.\nIngredienti: manzo, rucola, grana, riduzione balsamica\nAllergeni: latte\nCaratteristiche alimentari: senza glutine\nPiccantezza: non piccante\nConsigliato: piatto consigliato",
+    "image": "/assets/dish_images/tagliata-manzo-rucola-grana.jpg",
+    "images": [
+      "/assets/dish_images/tagliata-manzo-rucola-grana.jpg"
+    ],
+    "metadata": {
+      "id": "tagliata-manzo-rucola-grana",
+      "name": "Tagliata di Manzo con Rucola e Grana",
+      "price": 23.0,
+      "description": "Tagliata di manzo alla griglia servita con rucola fresca, scaglie di grana e riduzione balsamica.",
+      "ingredients": [
+        "manzo",
+        "rucola",
+        "grana",
+        "riduzione balsamica"
+      ],
+      "allergens": [
+        "latte"
+      ],
+      "diet_tags": [
+        "senza glutine"
+      ],
+      "spicy": false,
+      "recommended": true,
+      "image": "/assets/dish_images/tagliata-manzo-rucola-grana.jpg"
+    }
+  },
+  {
+    "id": "cheesecake-frutti-bosco",
+    "type": "dish",
+    "category": "Dolci",
+    "item_id": "cheesecake-frutti-bosco",
+    "name": "Cheesecake ai Frutti di Bosco",
+    "price": 6.5,
+    "text": "Categoria: Dolci\nNome piatto: Cheesecake ai Frutti di Bosco\nPrezzo: 6.50 euro\nDescrizione: Cheesecake cremosa con base biscotto e salsa ai frutti di bosco.\nIngredienti: formaggio fresco, biscotti, burro, frutti di bosco, zucchero\nAllergeni: latte, glutine\nCaratteristiche alimentari: vegetariano\nPiccantezza: non piccante\nConsigliato: piatto consigliato",
+    "image": "/assets/dish_images/cheesecake-frutti-bosco.jpg",
+    "images": [
+      "/assets/dish_images/cheesecake-frutti-bosco.jpg"
+    ],
+    "metadata": {
+      "id": "cheesecake-frutti-bosco",
+      "name": "Cheesecake ai Frutti di Bosco",
+      "price": 6.5,
+      "description": "Cheesecake cremosa con base biscotto e salsa ai frutti di bosco.",
+      "ingredients": [
+        "formaggio fresco",
+        "biscotti",
+        "burro",
+        "frutti di bosco",
+        "zucchero"
+      ],
+      "allergens": [
+        "latte",
+        "glutine"
+      ],
+      "diet_tags": [
+        "vegetariano"
+      ],
+      "spicy": false,
+      "recommended": true,
+      "image": "/assets/dish_images/cheesecake-frutti-bosco.jpg"
+    }
+  },
+  {
+    "id": "limonata-artigianale",
+    "type": "dish",
+    "category": "Bevande",
+    "item_id": "limonata-artigianale",
+    "name": "Limonata Artigianale",
+    "price": 4.5,
+    "text": "Categoria: Bevande\nNome piatto: Limonata Artigianale\nPrezzo: 4.50 euro\nDescrizione: Limonata fresca preparata con limoni, acqua, zucchero e menta.\nIngredienti: limone, acqua, zucchero, menta\nAllergeni: nessun allergene indicato\nCaratteristiche alimentari: vegetariano, vegano, senza glutine, senza lattosio\nPiccantezza: non piccante\nConsigliato: piatto consigliato",
+    "image": "/assets/dish_images/limonata-artigianale.jpg",
+    "images": [
+      "/assets/dish_images/limonata-artigianale.jpg"
+    ],
+    "metadata": {
+      "id": "limonata-artigianale",
+      "name": "Limonata Artigianale",
+      "price": 4.5,
+      "description": "Limonata fresca preparata con limoni, acqua, zucchero e menta.",
+      "ingredients": [
+        "limone",
+        "acqua",
+        "zucchero",
+        "menta"
+      ],
+      "allergens": [],
+      "diet_tags": [
+        "vegetariano",
+        "vegano",
+        "senza glutine",
+        "senza lattosio"
+      ],
+      "spicy": false,
+      "recommended": true,
+      "image": "/assets/dish_images/limonata-artigianale.jpg"
+    }
+  }
+]
