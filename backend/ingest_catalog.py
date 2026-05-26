@@ -2,7 +2,7 @@ import json
 from pathlib import Path
 from typing import List, Dict, Any
 
-import numpy as np
+from dotenv import load_dotenv
 
 from rag_store import RagStore, STORAGE_DIR, CHUNKS_PATH, EMBEDDINGS_PATH
 
@@ -10,6 +10,8 @@ from rag_store import RagStore, STORAGE_DIR, CHUNKS_PATH, EMBEDDINGS_PATH
 BASE_DIR = Path(__file__).resolve().parent
 CATALOG_PATH = BASE_DIR / "data" / "menu_catalog.json"
 CONFIG_PATH = BASE_DIR / "data" / "restaurant_config.json"
+
+load_dotenv(BASE_DIR / ".env", override=True)
 
 
 def load_json(path: Path) -> Dict[str, Any]:
@@ -54,6 +56,7 @@ def build_chunks_from_catalog() -> List[Dict[str, Any]]:
 Nome ristorante: {config.get("restaurant_name", "")}
 Indirizzo: {config.get("address", "")}
 Telefono: {config.get("phone", "")}
+Google Maps: {config.get("google_maps_url", "")}
 Orari: {json.dumps(config.get("opening_hours", {}), ensure_ascii=False)}
 Note: {" ".join(config.get("notes", []))}
 """.strip()
@@ -76,7 +79,6 @@ Note: {" ".join(config.get("notes", []))}
 
         for item in category.get("items", []):
             text = item_to_searchable_text(category_name, item)
-
             image = item.get("image", "")
 
             chunks.append({
@@ -105,16 +107,22 @@ def main():
 
     texts = [chunk["text"] for chunk in chunks]
 
+    print("[INFO] Creo embeddings con OpenAI...")
+    print(f"[INFO] Elementi da indicizzare: {len(texts)}")
+
     rag = RagStore()
     embeddings = rag.embed_texts(texts)
+
+    if len(embeddings) != len(chunks):
+        raise RuntimeError("Numero embeddings diverso dal numero chunks.")
 
     with open(CHUNKS_PATH, "w", encoding="utf-8") as f:
         json.dump(chunks, f, ensure_ascii=False, indent=2)
 
-    np.save(EMBEDDINGS_PATH, embeddings)
+    with open(EMBEDDINGS_PATH, "w", encoding="utf-8") as f:
+        json.dump(embeddings, f)
 
-    print("[OK] Catalogo indicizzato.")
-    print(f"[OK] Elementi indicizzati: {len(chunks)}")
+    print("[OK] Catalogo indicizzato con OpenAI embeddings.")
     print(f"[OK] Chunks salvati in: {CHUNKS_PATH}")
     print(f"[OK] Embeddings salvati in: {EMBEDDINGS_PATH}")
 

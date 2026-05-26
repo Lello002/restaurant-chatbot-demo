@@ -6,7 +6,7 @@
     "item_id": "",
     "name": "Gigio",
     "price": null,
-    "text": "Nome ristorante: Gigio\nIndirizzo: Piazza del Duomo, Firenze\nTelefono: +393331234567\nOrari: {\"lunedi\": \"12:00-15:00, 19:00-23:00\", \"martedi\": \"12:00-15:00, 19:00-23:00\", \"mercoledi\": \"12:00-15:00, 19:00-23:00\", \"giovedi\": \"12:00-15:00, 19:00-23:00\", \"venerdi\": \"12:00-15:00, 19:00-23:30\", \"sabato\": \"12:00-15:00, 19:00-23:30\", \"domenica\": \"chiuso\"}\nNote: Gli allergeni devono essere confermati dal personale prima dell'ordine. La disponibilità dei piatti può variare.",
+    "text": "Nome ristorante: Gigio\nIndirizzo: Piazza del Duomo, Firenze\nTelefono: +393331234567\nGoogle Maps: https://www.google.com/maps/search/?api=1&query=Piazza%20del%20Duomo%20Firenze\nOrari: {\"lunedi\": \"12:00-15:00, 19:00-23:00\", \"martedi\": \"12:00-15:00, 19:00-23:00\", \"mercoledi\": \"12:00-15:00, 19:00-23:00\", \"giovedi\": \"12:00-15:00, 19:00-23:00\", \"venerdi\": \"12:00-15:00, 19:00-23:30\", \"sabato\": \"12:00-15:00, 19:00-23:30\", \"domenica\": \"chiuso\"}\nNote: Gli allergeni devono essere confermati dal personale prima dell'ordine. La disponibilità dei piatti può variare.",
     "image": "",
     "images": [],
     "metadata": {

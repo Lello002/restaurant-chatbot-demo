@@ -24,12 +24,12 @@ OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-5-nano")
 
 if not OPENAI_API_KEY or OPENAI_API_KEY == "la_tua_chiave":
-    raise RuntimeError("OPENAI_API_KEY non valida. Controlla backend/.env")
+    raise RuntimeError("OPENAI_API_KEY non valida. Controlla backend/.env oppure le variabili d'ambiente su Render.")
 
 client = OpenAI(api_key=OPENAI_API_KEY)
 
 rag = RagStore()
-rag_ready = False
+rag.load()
 
 app = FastAPI(title="Restaurant Chatbot Prototype")
 
@@ -43,14 +43,6 @@ app.add_middleware(
 
 app.mount("/assets", StaticFiles(directory=str(ASSETS_DIR)), name="assets")
 
-@app.on_event("startup")
-def startup_event():
-    global rag_ready
-
-    print("[STARTUP] Caricamento indice RAG...")
-    rag.load()
-    rag_ready = True
-    print(f"[STARTUP] RAG pronto. Chunks caricati: {len(rag.chunks)}")
 
 class ChatRequest(BaseModel):
     message: str
@@ -77,13 +69,13 @@ class ChatResponse(BaseModel):
 def load_restaurant_config() -> Dict[str, Any]:
     if not CONFIG_PATH.exists():
         return {
-            "restaurant_name": "Ristorante Demo",
-            "assistant_name": "Assistente Menu",
+            "restaurant_name": "Ristorante",
+            "assistant_name": "Assistente AI",
             "logo_type": "emoji",
             "logo_emoji": "🍽️",
             "logo_image": "",
-            "hero_title": "Il menu diventa una conversazione.",
-            "hero_subtitle": "Chiedi consigli, ingredienti, prezzi e piatti disponibili.",
+            "hero_title": "Benvenuto",
+            "hero_subtitle": "Chiedi consigli sui piatti e scopri il menu.",
             "address": "",
             "phone": "",
             "google_maps_url": "",
@@ -262,7 +254,6 @@ def is_clearly_out_of_scope(user_message: str) -> bool:
     if any(keyword in message for keyword in blocked_keywords):
         return True
 
-    # Se il messaggio è lungo e non contiene parole da ristorante, lo blocchiamo.
     if len(message) > 80:
         return True
 
@@ -478,11 +469,9 @@ def collect_dish_cards(
 
         other_matches.append(dish)
 
-    # Priorità 1: se chiede un piatto preciso, mostra solo quel piatto.
     if exact_matches:
         return exact_matches[:1]
 
-    # Priorità 2: se chiede una categoria precisa, mostra solo piatti di quella categoria.
     if requested_category:
         return category_matches[:5]
 
@@ -587,14 +576,6 @@ Rispondi in modo utile, elegante, chiaro e commerciale.
 def chat(req: ChatRequest):
     message = req.message.strip()
 
-    if not rag_ready:
-        return ChatResponse(
-            answer="Sto completando l'avvio del menu digitale. Riprova tra qualche secondo.",
-            images=[],
-            dishes=[],
-            sources=[]
-    )
-
     if not message:
         raise HTTPException(status_code=400, detail="Messaggio vuoto.")
 
@@ -630,7 +611,7 @@ def chat(req: ChatRequest):
             "type": chunk.get("type", ""),
             "category": chunk.get("category", ""),
             "name": chunk.get("name", ""),
-            "score": round(chunk["score"], 4),
+            "score": round(chunk.get("score", 0.0), 4),
             "preview": chunk["text"][:250] + "..."
         }
         for chunk in retrieved_chunks
@@ -649,13 +630,13 @@ def get_config():
     config = load_restaurant_config()
 
     public_config = {
-        "restaurant_name": config.get("restaurant_name", "Ristorante Demo"),
-        "assistant_name": config.get("assistant_name", "Assistente Menu"),
+        "restaurant_name": config.get("restaurant_name", "Ristorante"),
+        "assistant_name": config.get("assistant_name", "Assistente AI"),
         "logo_type": config.get("logo_type", "emoji"),
         "logo_emoji": config.get("logo_emoji", "🍽️"),
         "logo_image": config.get("logo_image", ""),
-        "hero_title": config.get("hero_title", "Il menu diventa una conversazione."),
-        "hero_subtitle": config.get("hero_subtitle", "Chiedi consigli, ingredienti, prezzi e piatti disponibili."),
+        "hero_title": config.get("hero_title", "Benvenuto"),
+        "hero_subtitle": config.get("hero_subtitle", "Chiedi consigli sui piatti e scopri il menu."),
         "address": config.get("address", ""),
         "phone": config.get("phone", ""),
         "google_maps_url": config.get("google_maps_url", ""),
@@ -689,7 +670,7 @@ def health():
     return {
         "ok": True,
         "model": OPENAI_MODEL,
-        "rag_ready": rag_ready,
+        "embedding_model": os.getenv("OPENAI_EMBEDDING_MODEL", "text-embedding-3-small"),
         "rag_chunks": len(rag.chunks)
     }
 

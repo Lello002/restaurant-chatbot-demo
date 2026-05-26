@@ -8,5 +8,7 @@
     envVars:
       - key: OPENAI_MODEL
         value: gpt-5-nano
+      - key: OPENAI_EMBEDDING_MODEL
+        value: text-embedding-3-small
       - key: OPENAI_API_KEY
         sync: false
