@@ -78,14 +78,25 @@
 
     <section class="chat-panel">
       <header class="chat-header">
-        <div>
-          <span class="status-dot"></span>
-          <strong id="chatAssistantName">Assistente AI</strong>
-          <small>Online</small>
-        </div>
+  <div>
+    <span class="status-dot"></span>
+    <strong id="chatAssistantName">Assistente AI</strong>
+    <small>Online</small>
+  </div>
 
-        <button id="clearChatBtn">Reset</button>
-      </header>
+  <div class="chat-header-actions">
+    <select id="languageSelect" class="language-select" aria-label="Seleziona lingua">
+      <option value="it">🇮🇹 IT</option>
+      <option value="en">🇬🇧 EN</option>
+      <option value="fr">🇫🇷 FR</option>
+      <option value="es">🇪🇸 ES</option>
+      <option value="de">🇩🇪 DE</option>
+      <option value="zh">🇨🇳 中文</option>
+    </select>
+
+    <button id="clearChatBtn">Reset</button>
+  </div>
+</header>
 
       <div id="chatMessages" class="chat-messages">
         <div class="message assistant">

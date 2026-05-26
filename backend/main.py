@@ -47,6 +47,7 @@ app.mount("/assets", StaticFiles(directory=str(ASSETS_DIR)), name="assets")
 class ChatRequest(BaseModel):
     message: str
     history: List[Dict[str, str]] = []
+    language: str = "it"
 
 
 class DishCard(BaseModel):
@@ -504,8 +505,50 @@ def collect_dish_cards(
 
     return other_matches[:3]
 
+LANGUAGES = {
+    "it": {
+        "name": "italiano",
+        "out_of_scope": "Posso aiutarti solo con informazioni sul menu, sui piatti, sugli allergeni, sugli orari e sui contatti del ristorante.",
+        "too_long": "Il messaggio è un po’ troppo lungo. Posso aiutarti con domande brevi sul menu, sui piatti, sugli orari o sui contatti del ristorante."
+    },
+    "en": {
+        "name": "English",
+        "out_of_scope": "I can only help with information about the menu, dishes, allergens, opening hours and restaurant contacts.",
+        "too_long": "Your message is a bit too long. Please ask a shorter question about the menu, dishes, opening hours or restaurant contacts."
+    },
+    "fr": {
+        "name": "français",
+        "out_of_scope": "Je peux seulement vous aider avec le menu, les plats, les allergènes, les horaires et les contacts du restaurant.",
+        "too_long": "Votre message est un peu trop long. Posez une question plus courte sur le menu, les plats, les horaires ou les contacts du restaurant."
+    },
+    "es": {
+        "name": "español",
+        "out_of_scope": "Solo puedo ayudarte con información sobre el menú, los platos, los alérgenos, los horarios y los contactos del restaurante.",
+        "too_long": "Tu mensaje es un poco demasiado largo. Haz una pregunta más breve sobre el menú, los platos, los horarios o los contactos del restaurante."
+    },
+    "de": {
+        "name": "Deutsch",
+        "out_of_scope": "Ich kann nur mit Informationen zur Speisekarte, zu Gerichten, Allergenen, Öffnungszeiten und Kontaktdaten des Restaurants helfen.",
+        "too_long": "Deine Nachricht ist etwas zu lang. Bitte stelle eine kürzere Frage zur Speisekarte, zu Gerichten, Öffnungszeiten oder Kontaktdaten."
+    },
+    "zh": {
+        "name": "中文",
+        "out_of_scope": "我只能帮助回答有关菜单、菜品、过敏原、营业时间和餐厅联系方式的问题。",
+        "too_long": "您的消息有点太长了。请简短询问菜单、菜品、营业时间或餐厅联系方式。"
+    }
+}
 
-def ask_model(user_message: str, context: str, history: List[Dict[str, str]]) -> str:
+
+def get_language_config(language_code: str) -> Dict[str, str]:
+    return LANGUAGES.get(language_code, LANGUAGES["it"])
+
+
+def ask_model(
+    user_message: str,
+    context: str,
+    history: List[Dict[str, str]],
+    language: str
+) -> str:
     history_text = ""
 
     for msg in history[-6:]:
@@ -517,12 +560,14 @@ def ask_model(user_message: str, context: str, history: List[Dict[str, str]]) ->
 
     restaurant_config = load_restaurant_config()
     restaurant_name = restaurant_config.get("restaurant_name", "il ristorante")
+    language_config = get_language_config(language)
+    language_name = language_config["name"]
 
     system_prompt = f"""
 Sei un assistente virtuale per il ristorante {restaurant_name}.
 
 Regole fondamentali:
-- Rispondi sempre in italiano.
+- Rispondi sempre e solo in {language_name}.
 - Usa SOLO le informazioni presenti nel menu recuperato.
 - Se una cosa non è presente nel menu, dillo chiaramente.
 - Non inventare ingredienti, prezzi, allergeni, disponibilità o immagini.
@@ -579,9 +624,11 @@ def chat(req: ChatRequest):
     if not message:
         raise HTTPException(status_code=400, detail="Messaggio vuoto.")
 
+    language_config = get_language_config(req.language)
+
     if is_message_too_long(message):
         return ChatResponse(
-            answer="Il messaggio è un po’ troppo lungo. Posso aiutarti con domande brevi sul menu, sui piatti, sugli orari o sui contatti del ristorante.",
+            answer=language_config["too_long"],
             images=[],
             dishes=[],
             sources=[]
@@ -589,7 +636,7 @@ def chat(req: ChatRequest):
 
     if is_clearly_out_of_scope(message):
         return ChatResponse(
-            answer="Posso aiutarti solo con informazioni sul menu, sui piatti, sugli allergeni, sugli orari e sui contatti del ristorante.",
+            answer=language_config["out_of_scope"],
             images=[],
             dishes=[],
             sources=[]
@@ -602,7 +649,7 @@ def chat(req: ChatRequest):
     dishes = collect_dish_cards(message, retrieved_chunks)
 
     try:
-        answer = ask_model(message, context, req.history)
+        answer = ask_model(message, context, req.history, req.language)
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Errore OpenAI: {str(e)}")
 

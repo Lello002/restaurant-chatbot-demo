@@ -2,6 +2,7 @@ const chatForm = document.getElementById("chatForm");
 const messageInput = document.getElementById("messageInput");
 const chatMessages = document.getElementById("chatMessages");
 const clearChatBtn = document.getElementById("clearChatBtn");
+const languageSelect = document.getElementById("languageSelect");
 const quickButtons = document.querySelectorAll(".quick-btn");
 
 const restaurantLogo = document.getElementById("restaurantLogo");
@@ -18,6 +19,7 @@ const modalImage = document.getElementById("modalImage");
 const closeImageModal = document.getElementById("closeImageModal");
 
 let history = [];
+let currentLanguage = "it";
 
 let restaurantConfig = {
   restaurant_name: "Ristorante",
@@ -131,11 +133,20 @@ function applyRestaurantConfig() {
 function resetWelcomeMessage() {
   const name = restaurantConfig.restaurant_name || "il ristorante";
 
+  const welcomeMessages = {
+    it: `Ciao! Sono l’assistente di ${name}. Dimmi cosa ti va e ti aiuto a scegliere dal menu.`,
+    en: `Hi! I’m the assistant for ${name}. Tell me what you feel like and I’ll help you choose from the menu.`,
+    fr: `Bonjour ! Je suis l’assistant de ${name}. Dites-moi ce que vous souhaitez et je vous aide à choisir dans le menu.`,
+    es: `¡Hola! Soy el asistente de ${name}. Dime qué te apetece y te ayudo a elegir del menú.`,
+    de: `Hallo! Ich bin der Assistent von ${name}. Sag mir, worauf du Lust hast, und ich helfe dir bei der Auswahl.`,
+    zh: `你好！我是 ${name} 的助手。告诉我你想吃什么，我会帮你从菜单中选择。`
+  };
+
   chatMessages.innerHTML = `
     <div class="message assistant">
       <div class="avatar">🍽️</div>
       <div class="bubble">
-        Ciao! Sono l’assistente di ${name}. Dimmi cosa ti va e ti aiuto a scegliere dal menu.
+        ${welcomeMessages[currentLanguage] || welcomeMessages.it}
       </div>
     </div>
   `;
@@ -283,7 +294,8 @@ async function sendMessage(text) {
       },
       body: JSON.stringify({
         message,
-        history
+        history,
+        language: currentLanguage
       })
     });
 
@@ -334,6 +346,12 @@ clearChatBtn.addEventListener("click", () => {
   resetWelcomeMessage();
   closeModal();
   messageInput.focus();
+});
+
+languageSelect.addEventListener("change", () => {
+  currentLanguage = languageSelect.value;
+  history = [];
+  resetWelcomeMessage();
 });
 
 loadRestaurantConfig();
